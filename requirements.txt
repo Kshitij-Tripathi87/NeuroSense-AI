@@ -1,4 +1,7 @@
+torchmetrics
 torch
+flask
+opencv-python
+numpy
 torchvision
-streamlit
-Pillow
+pillow
