@@ -7,7 +7,7 @@ import os
 # Model Configuration
 CHANNELS = 3
 BATCH_SIZE = 32
-EPOCHS = 50
+EPOCHS = 5000
 LEARNING_RATE = 0.001
 
 # Classes - Brain Tumor Types
