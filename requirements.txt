@@ -1,7 +1,4 @@
-torchmetrics
-torch
 flask
-opencv-python
 numpy
-torchvision
 pillow
+tensorflow
