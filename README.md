@@ -1,5 +1,5 @@
 # NeuroSense-AI
-NeuroScan AI is a deep learning system that classifies brain tumors from MRI images into four categories:
+NeuroSense AI is a deep learning system that classifies brain tumors from MRI images into four categories:
 
 Glioma - Tumors arising from glial cells
 Meningioma - Tumors of the meninges
