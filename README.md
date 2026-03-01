@@ -31,5 +31,4 @@ Per-class accuracy analysis
 Classification report
 Training history visualization.  
 
-Download the dataset required for the model:
-https://www.kaggle.com/datasets/masoudnickparvar/brain-tumor-mri-dataset
+
