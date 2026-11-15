@@ -4,3 +4,5 @@ models/
 uploads/
 *.h5
 .env
+*.keras
+dataset/
