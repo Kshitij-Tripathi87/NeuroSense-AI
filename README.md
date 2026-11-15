@@ -16,6 +16,7 @@ NeuroSense AI is a deep learning project that classifies brain MRI images into f
 |---|---|
 | `train.py` | Trains a small convolutional neural network (CNN) and saves the best model |
 | `evaluate.py` | Scores a trained model on a held-out test set |
+| `app.py` | REST API that classifies uploaded images with the trained model |
 | `Installation_guide.md` | Setup and usage steps |
 
 ## Model
@@ -37,6 +38,30 @@ NeuroSense AI is a deep learning project that classifies brain MRI images into f
 
 No benchmark results are published here yet.
 
+## REST API
+
+`python app.py` serves the trained model on `http://127.0.0.1:5000`.
+
+| Endpoint | Purpose |
+|---|---|
+| `GET /health` | Service status and the classes the model predicts |
+| `POST /predict` | Classify one image sent as multipart form field `file` |
+
+```
+curl -F "file=@scan.jpg" http://127.0.0.1:5000/predict
+```
+
+```json
+{
+  "prediction": "glioma",
+  "confidence": 0.91,
+  "probabilities": {"glioma": 0.91, "meningioma": 0.05, "notumor": 0.01, "pituitary": 0.03}
+}
+```
+
+The numbers above only show the response format. Errors come back as `{"error": "..."}` with a
+4xx status. Uploads are limited to 10 MB and are never written to disk.
+
 ## Dataset
 
 The dataset is not included. Any image set works as long as it has one sub-folder per class:
@@ -57,6 +82,7 @@ This is the layout of the "Brain Tumor MRI Dataset" by Masoud Nickparvar on Kagg
 pip install -r requirements.txt
 python train.py
 python evaluate.py
+python app.py
 ```
 
 See [Installation_guide.md](Installation_guide.md) for details and options.
