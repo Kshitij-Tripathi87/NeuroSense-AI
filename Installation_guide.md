@@ -60,14 +60,36 @@
 
    This prints accuracy, per-class precision, recall and F1 score, and the confusion matrix.
 
+6. Start the API (optional):
+
+   ```
+   python app.py
+   ```
+
+   Then send it an image from another terminal:
+
+   ```
+   curl -F "file=@scan.jpg" http://127.0.0.1:5000/predict
+   ```
+
+   (In Windows PowerShell, type `curl.exe` instead of `curl`.)
+
+   The reply is JSON with the predicted class, its confidence and the probability of every
+   class. `GET /health` returns the service status and class names.
+
+   By default the API only accepts connections from the same machine. Use `--host 0.0.0.0` to
+   open it to your network, and `--port` to change the port. It runs on Flask's built-in
+   server, which is meant for development; put it behind a production WSGI server such as
+   Waitress or Gunicorn before exposing it more widely.
+
 ## Options
 
-Run `python train.py --help` or `python evaluate.py --help` for the full list. The most useful:
+Run any script with `--help` for its full list. The most useful:
 
 | Option | Default | Meaning |
 |---|---|---|
 | `--data-dir` | `dataset/Training` (train), `dataset/Testing` (evaluate) | Folder with one sub-folder per class |
-| `--model-dir` | `models` | Where the model and class names are written and read |
+| `--model-dir` | `models` | Where the model and class names are written and read (all three scripts) |
 | `--epochs` | `50` | Maximum number of epochs |
 | `--patience` | `5` | Epochs without improvement before training stops |
 | `--img-size` | `128` | Images are resized to this size |
